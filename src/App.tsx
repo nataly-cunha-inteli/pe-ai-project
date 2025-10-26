@@ -15,6 +15,7 @@ import FormSuccess from "./pages/FormSuccess";
 import AIProcessing from "./pages/AIProcessing";
 import NotFound from "./pages/NotFound";
 import { TestForm } from './pages/TestForm';
+import { Login } from './pages/Login';
 
 const queryClient = new QueryClient();
 
@@ -25,7 +26,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Index />} />
           <Route path="/students" element={<Students />} />
           <Route path="/peis" element={<PEIs />} />
           <Route path="/students/:studentId/history" element={<StudentHistory />} />
