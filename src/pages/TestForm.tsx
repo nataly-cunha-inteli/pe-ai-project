@@ -3,6 +3,8 @@ import { useToast } from '../hooks/use-toast';
 import { getAllPEIs, getPEI, submitProfessionalResponse } from '../services/api';
 import { PEI } from '../services/api';
 import { Loader2, Send, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../components/Navbar';
 
 interface Professional {
   id: string;
@@ -13,6 +15,7 @@ interface Professional {
 
 export const TestForm: React.FC = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [peis, setPeis] = useState<PEI[]>([]);
   const [selectedPEI, setSelectedPEI] = useState<string>('');
   const [professionals, setProfessionals] = useState<Professional[]>([]);
@@ -230,6 +233,14 @@ export const TestForm: React.FC = () => {
     });
   };
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -239,106 +250,135 @@ export const TestForm: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            🧪 Testar Formulário Profissional
-          </h1>
-          <p className="text-gray-600 mb-6">
-            Envie respostas de profissionais para testar o processamento de IA
-          </p>
+    <div className="flex flex-col min-h-screen bg-[#F8F9FA]">
+      <Navbar onLogout={handleLogout} />
+      
+      {/* Header com botão Voltar */}
+      <div className="flex items-center gap-4 px-8 py-6 bg-white border-b border-gray-200">
+        <button
+          onClick={handleBack}
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-4 h-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+            />
+          </svg>
+          Voltar
+        </button>
+        <h1 className="text-2xl font-bold text-gray-900">Formulário de Teste</h1>
+      </div>
 
-          {/* Seleção de PEI */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              1. Selecione o PEI
-            </label>
-            <select
-              value={selectedPEI}
-              onChange={(e) => handlePEIChange(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-            >
-              <option value="">-- Selecione um PEI em coleta --</option>
-              {peis.map(pei => (
-                <option key={pei.id} value={pei.id}>
-                  {pei.id} - Aluno ID: {pei.student_id}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              🧪 Testar Formulário Profissional
+            </h1>
+            <p className="text-gray-600 mb-6">
+              Envie respostas de profissionais para testar o processamento de IA
+            </p>
 
-          {/* Seleção de Profissional */}
-          {professionals.length > 0 && (
+            {/* Seleção de PEI */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                2. Selecione o Profissional
+                1. Selecione o PEI
               </label>
               <select
-                value={selectedProfessional}
-                onChange={(e) => handleProfessionalChange(e.target.value)}
+                value={selectedPEI}
+                onChange={(e) => handlePEIChange(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
-                <option value="">-- Selecione um profissional --</option>
-                {professionals.map(prof => (
-                  <option key={prof.id} value={prof.id}>
-                    {prof.name} ({prof.type}) - {prof.phone}
+                <option value="">-- Selecione um PEI em coleta --</option>
+                {peis.map(pei => (
+                  <option key={pei.id} value={pei.id}>
+                    {pei.id} - Aluno ID: {pei.student_id}
                   </option>
                 ))}
               </select>
             </div>
-          )}
 
-          {/* Formulário */}
-          {selectedProfessional && (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  3. Preencha as Respostas
-                </h2>
-                <button
-                  type="button"
-                  onClick={fillSampleData}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            {/* Seleção de Profissional */}
+            {professionals.length > 0 && (
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  2. Selecione o Profissional
+                </label>
+                <select
+                  value={selectedProfessional}
+                  onChange={(e) => handleProfessionalChange(e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
-                  📝 Preencher com Dados de Exemplo
-                </button>
+                  <option value="">-- Selecione um profissional --</option>
+                  {professionals.map(prof => (
+                    <option key={prof.id} value={prof.id}>
+                      {prof.name} ({prof.type}) - {prof.phone}
+                    </option>
+                  ))}
+                </select>
               </div>
+            )}
 
-              {Object.entries(formData).map(([key, value]) => (
-                <div key={key}>
-                  <label className="block text-sm font-medium text-gray-700 mb-2 capitalize">
-                    {key.replace(/_/g, ' ')}
-                  </label>
-                  <textarea
-                    value={value}
-                    onChange={(e) => handleInputChange(key, e.target.value)}
-                    rows={3}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder={`Digite ${key.replace(/_/g, ' ')}`}
-                  />
+            {/* Formulário */}
+            {selectedProfessional && (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    3. Preencha as Respostas
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={fillSampleData}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    📝 Preencher com Dados de Exemplo
+                  </button>
                 </div>
-              ))}
 
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {submitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Enviar Resposta
-                  </>
-                )}
-              </button>
-            </form>
-          )}
+                {Object.entries(formData).map(([key, value]) => (
+                  <div key={key}>
+                    <label className="block text-sm font-medium text-gray-700 mb-2 capitalize">
+                      {key.replace(/_/g, ' ')}
+                    </label>
+                    <textarea
+                      value={value}
+                      onChange={(e) => handleInputChange(key, e.target.value)}
+                      rows={3}
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      placeholder={`Digite ${key.replace(/_/g, ' ')}`}
+                    />
+                  </div>
+                ))}
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Enviar Resposta
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -33,17 +33,17 @@ export const PEICard: React.FC<PEICardProps> = ({
   };
 
   return (
-    <article className="border bg-white flex w-full flex-col items-stretch text-black font-normal mt-8 px-[41px] py-9 rounded-[10px] border-solid border-[#C4C4C4] max-md:max-w-full max-md:px-5">
+    <article className="border bg-white flex w-full max-w-[474px] flex-col items-stretch text-black font-normal mt-8 px-[41px] py-9 rounded-[10px] border-solid border-[#C4C4C4] max-md:max-w-full max-md:px-5 overflow-hidden">
       <header className="flex w-full items-stretch gap-5 justify-between max-md:mr-[3px]">
-        <div className="flex items-stretch gap-3.5 text-lg">
+        <div className="flex items-stretch gap-3.5 text-lg min-w-0 flex-1">
           <img
             src={studentIcon}
             alt={`${studentName} avatar`}
             className="aspect-[0.96] object-contain w-[26px] shrink-0"
           />
-          <h3 className="basis-auto my-auto">{studentName}</h3>
+          <h3 className="basis-auto my-auto truncate">{studentName}</h3>
         </div>
-        <div className="text-xl">{year}</div>
+        <div className="text-xl shrink-0">{year}</div>
       </header>
       
       <div className="flex items-stretch gap-3 text-lg text-black mt-[23px]">
@@ -52,7 +52,7 @@ export const PEICard: React.FC<PEICardProps> = ({
           alt="Status icon"
           className="aspect-[0.96] object-contain w-[27px] shrink-0"
         />
-        <div className="basis-auto grow shrink my-auto">
+        <div className="basis-auto grow shrink my-auto truncate">
           Status:{" "}
           <span style={{ fontWeight: 700, color: statusColor }}>
             {status}

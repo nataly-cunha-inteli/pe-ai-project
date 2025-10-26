@@ -247,10 +247,6 @@ const ViewPEI = () => {
               PEI - {student.name}
             </h1>
           </div>
-          <Button variant="outline" className="flex items-center gap-2">
-            <FileText className="w-4 h-4" />
-            PDF
-          </Button>
         </div>
 
         {/* Status */}
@@ -607,10 +603,6 @@ const ViewPEI = () => {
           >
             <Download className="w-4 h-4" />
             Baixar PDF
-          </Button>
-          <Button variant="outline" className="flex items-center gap-2">
-            <Edit className="w-4 h-4" />
-            Solicitar Ajustes
           </Button>
           {pei?.status === 'concluido' ? (
             <Button 

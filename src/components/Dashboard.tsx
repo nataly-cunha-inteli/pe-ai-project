@@ -168,8 +168,8 @@ export const Dashboard: React.FC = () => {
         </div>
       </section>
 
-      <div className="flex w-full max-w-[1055px] items-stretch gap-5 flex-wrap justify-between mt-[58px] max-md:max-w-full max-md:mt-10">
-        <section className="my-auto max-md:max-w-full">
+      <div className="flex w-full max-w-[1055px] items-start gap-5 flex-wrap justify-between mt-[58px] max-md:max-w-full max-md:mt-10">
+        <section className="max-md:max-w-full">
           <header className="flex w-full items-stretch gap-5 justify-between max-md:max-w-full">
             <h2 className="text-black text-[28px] font-normal">
               PEI's recentes
@@ -204,7 +204,7 @@ export const Dashboard: React.FC = () => {
 
         <div className="border w-px shrink-0 h-[1003px] bg-[#C4C4C4] border-[rgba(196,196,196,1)] border-solid" />
 
-        <section className="flex flex-col mt-5 max-md:max-w-full">
+        <section className="flex flex-col max-md:max-w-full">
           <header className="flex w-[473px] max-w-full items-stretch gap-5 justify-between">
             <h2 className="text-black text-[28px] font-normal">
               Status por aluno
