@@ -225,7 +225,7 @@ A aprovação do coordenador pedagógico garante:
 
 ## Arquitetura do Sistema: Três Agentes de IA
 
-O PE.AI utiliza três agentes especializados que trabalham de forma orquestrada. Para detalhes técnicos sobre a implementação, consulte a [documentação de tecnologia](./04_Tecnologia.md).
+O PE.AI utiliza três agentes especializados que trabalham de forma orquestrada. Para detalhes técnicos sobre a implementação, consulte a [documentação de tecnologia](./05_Tecnologia.md).
 
 <p style={{textAlign: 'center'}}>Figura 3 - Arquitetura do Sistema Multiagente PE.AI</p>
 

@@ -397,7 +397,7 @@ Não é sobre tecnologia. É sobre **227 mil futuros** que merecem acontecer.
 
 **Para entender o problema completo que resolvemos, leia a [problemática](./02_Problematica.md).**  
 **Para ver como a solução funciona, consulte [como funciona o PE.AI](./03_Como_Funciona.md).**  
-**Para conhecer a viabilidade financeira, acesse [escalabilidade financeira](./escalabilidade-financeira).**
+**Para conhecer a viabilidade financeira, acesse [escalabilidade financeira](./06_Financeiro.md).**
 
 ## Referências
 
