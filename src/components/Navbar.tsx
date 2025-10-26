@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav className="items-center self-stretch flex min-h-[83px] w-full gap-[40px_49px] flex-wrap bg-[#E75A00] pl-[51px] pr-[52px] py-[18px] max-md:max-w-full max-md:px-5">
       <div className="self-stretch flex min-w-60 items-center gap-8 grow shrink w-[888px] my-auto max-md:max-w-full">
-        <Link to="/">
+        <Link to="/dashboard">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/5e4c789fa75d88c1cd75aee46ac320e7773c6994?placeholderIfAbsent=true"
             alt="Logo"
@@ -24,9 +24,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         </Link>
         <div className="flex gap-6">
           <Link
-            to="/"
+            to="/dashboard"
             className={`text-white text-lg font-medium hover:text-[#FFD8C3] transition-colors ${
-              location.pathname === '/' ? 'border-b-2 border-white' : ''
+              location.pathname === '/dashboard' ? 'border-b-2 border-white' : ''
             }`}
           >
             Dashboard
