@@ -26,28 +26,16 @@ from .pei_pdf_generator import generate_pei_pdf
 app = FastAPI(title="PE-AI Student API")
 
 # CORS configuration for Vite frontend
-# CORS configuration: read allowed origins from environment so we can
-# configure the correct frontend origin in production without editing code.
-# Provide a comma-separated list in CORS_ALLOWED_ORIGINS. If not provided
-# we fall back to common localhost dev origins.
-default_origins = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "http://localhost:8080",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:8080",
-]
-
-cors_env = os.getenv("CORS_ALLOWED_ORIGINS", "")
-if cors_env:
-    # Split on commas and strip whitespace
-    origins = [o.strip() for o in cors_env.split(",") if o.strip()]
-else:
-    origins = default_origins
-
+# CORS configuration: allow the deployed frontend and local dev origins.
+# This prevents cross-origin failures when frontend and backend are on
+# different domains (Render static + web services).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "https://pe-ai-frontend.onrender.com",  # frontend deploy
+        "http://localhost:5173",                # local dev (Vite)
+        "http://localhost:8080",                # alt local
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
