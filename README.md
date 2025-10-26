@@ -1,5 +1,5 @@
 
-![PE.ai Banner](docs/static/img/banner.png)
+![PE.ai Banner](./docs/static/img/banner.png)
 
 # 🟠 PE.ai — Inteligência para Planos Educacionais Individualizados
 
