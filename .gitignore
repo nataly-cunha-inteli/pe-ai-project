@@ -40,5 +40,4 @@ __pycache__/
 *.so
 .Python
 backend/__pycache__/
-*.db
 *.db-journal
