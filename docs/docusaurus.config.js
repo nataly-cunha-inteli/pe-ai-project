@@ -16,11 +16,13 @@ const config = {
 
   // Set the production url of your site here
   url: "https://nataly-cunha-inteli.github.io",
-  baseUrl: "/pe-ai-v00/",
+  baseUrl: "/pe-ai-project/",
+  // Explicit trailingSlash setting to avoid GitHub Pages redirect/trailing slash issues
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   organizationName: "nataly-cunha-inteli", // Usually your GitHub org/user name.
-  projectName: "pe-ai-v00", // Usually your repo name.
+  projectName: "pe-ai-project", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
