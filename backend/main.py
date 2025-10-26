@@ -186,8 +186,12 @@ def startup_event():
 
 
 # API Endpoints
-@app.get("/")
+@app.get("/api/health")
 def read_root():
+    """Health endpoint for the API. The SPA is served at the root `/` by StaticFiles.
+    This avoids a route collision where an API route at `/` prevents the frontend index.html
+    from being served.
+    """
     return {"message": "PE-AI Student API", "status": "running"}
 
 
