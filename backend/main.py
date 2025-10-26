@@ -26,15 +26,28 @@ from .pei_pdf_generator import generate_pei_pdf
 app = FastAPI(title="PE-AI Student API")
 
 # CORS configuration for Vite frontend
+# CORS configuration: read allowed origins from environment so we can
+# configure the correct frontend origin in production without editing code.
+# Provide a comma-separated list in CORS_ALLOWED_ORIGINS. If not provided
+# we fall back to common localhost dev origins.
+default_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://localhost:8080",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:8080",
+]
+
+cors_env = os.getenv("CORS_ALLOWED_ORIGINS", "")
+if cors_env:
+    # Split on commas and strip whitespace
+    origins = [o.strip() for o in cors_env.split(",") if o.strip()]
+else:
+    origins = default_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "http://localhost:8080",  # Porta alternativa do Vite
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:8080",
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -186,7 +199,7 @@ def startup_event():
 
 
 # API Endpoints
-@app.get("/api/health")
+@app.get("/")
 def read_root():
     """Health endpoint for the API. The SPA is served at the root `/` by StaticFiles.
     This avoids a route collision where an API route at `/` prevents the frontend index.html
