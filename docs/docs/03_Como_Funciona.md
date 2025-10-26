@@ -441,6 +441,26 @@ flowchart TD
 
 <p style={{textAlign: 'center'}}>Fonte: Os autores (2025)</p>
 
+## Acessibilidade em Libras: Integração com VLibras
+
+O PE.AI implementa a extensão VLibras para garantir acessibilidade completa a usuários que se comunicam em Língua Brasileira de Sinais (Libras), promovendo inclusão digital para toda a comunidade surda.
+
+<div style={{margin: 25}}>
+    <div style={{textAlign: 'center'}}>
+        <img src={require("../static/img/vlibras_gif.gif").default} style={{width: 800}} alt="Demonstração da extensão VLibras em funcionamento" />
+        <br />
+    </div>
+</div>
+
+**Como Funciona:**
+
+- **Tradução Automática:** Todo conteúdo textual da plataforma pode ser traduzido em tempo real para Libras através do avatar virtual e com legendas
+- **Disponível em Todas as Telas:** O widget VLibras está presente em dashboards, formulários, visualização de PEIs e documentos
+- **Ativação Simples:** Usuário clica no ícone de acessibilidade e o avatar aparece traduzindo automaticamente. Enquanto traduz o conteúdo, o usuário também consegue interagir com agilidade.
+- **Conformidade Legal:** Atende ao Decreto 5.296/2004 e Lei 10.098/2000 sobre acessibilidade digital
+
+Como impacto esperado, coordenadores, famílias e profissionais surdos conseguem utilizar toda a funcionalidade do PE.AI sem barreiras comunicacionais, ampliando ainda mais o alcance da educação inclusiva no Brasil.
+
 ## Interface do Coordenador
 
 Dashboard intuitivo com 4 funcionalidades principais:
