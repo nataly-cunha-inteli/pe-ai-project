@@ -12,16 +12,16 @@ from datetime import datetime
 from pypdf import PdfReader
 import io
 
-from database import Student, Respondent, PEI, ProfessionalResponse, AdaptedMaterial, SessionLocal, get_db, init_db
-from ai import (
+from .database import Student, Respondent, PEI, ProfessionalResponse, AdaptedMaterial, SessionLocal, get_db, init_db
+from .ai import (
     PEAIOrchestrator, 
     StudentInfo, 
     ProfessionalResponse as AIProfessionalResponse, 
     PEIDocument,
     WorkflowOrchestratorAgent
 )
-from pdf_generator import generate_pdf_from_json
-from pei_pdf_generator import generate_pei_pdf
+from .pdf_generator import generate_pdf_from_json
+from .pei_pdf_generator import generate_pei_pdf
 
 app = FastAPI(title="PE-AI Student API")
 
@@ -323,7 +323,7 @@ async def download_pei_pdf(pei_id: str, db: Session = Depends(get_db)):
         print(f"[DEBUG] Dados do PEI preparados, gerando PDF...")
         
         # Importa e chama o gerador de PDF
-        from pei_pdf_generator import generate_pei_pdf
+        from .pei_pdf_generator import generate_pei_pdf
         pdf_buffer = generate_pei_pdf(pei_data)
         
         print(f"[DEBUG] PDF gerado com sucesso")
@@ -1027,7 +1027,7 @@ async def download_pei_pdf(pei_id: str, db: Session = Depends(get_db)):
         print(f"[DEBUG] Dados do PEI preparados, gerando PDF...")
         
         # Importa e chama o gerador de PDF
-        from pei_pdf_generator import generate_pei_pdf
+        from .pei_pdf_generator import generate_pei_pdf
         pdf_buffer = generate_pei_pdf(pei_data)
         
         print(f"[DEBUG] PDF gerado com sucesso")
